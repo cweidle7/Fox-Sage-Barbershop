@@ -104,6 +104,59 @@
   .topbar nav a.nav-cta:hover { background: #cc2200; color: #fff; }
   @media (min-width: 760px) { .topbar nav { display: flex; } }
 
+  /* --- Mobile hamburger --------------------------------------- */
+  .menu-toggle {
+    justify-self: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px; height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px;
+    color: var(--ink);
+  }
+  .menu-toggle span {
+    display: block;
+    width: 22px; height: 2px;
+    background: currentColor;
+    border-radius: 1px;
+    transition: transform .22s ease, opacity .18s ease;
+    transform-origin: center;
+  }
+  .menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  @media (min-width: 760px) {
+    .menu-toggle { display: none; }
+  }
+  @media (max-width: 759px) {
+    .topbar nav {
+      position: absolute;
+      top: 100%;
+      left: 0; right: 0;
+      background: #ffffff;
+      border-bottom: 1px solid var(--rule);
+      flex-direction: column;
+      padding: 8px var(--mx) 16px;
+      gap: 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .topbar nav.is-open { display: flex; }
+    .topbar nav a {
+      padding: 13px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .topbar nav a:last-child { border-bottom: none; }
+    .topbar nav a.nav-cta {
+      margin-top: 8px;
+      text-align: center;
+      padding: 12px 18px;
+    }
+  }
+
   /* Page header */
   .page-header {
     padding-top: clamp(140px, 16vw, 200px);
@@ -389,11 +442,15 @@
 <div class="grain" aria-hidden="true"></div>
 
 <header class="topbar">
-  <span class="spacer" aria-hidden="true"></span>
+  <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </button>
   <a href="index.html" class="mark" aria-label="Fox &amp; Sage Barber Company — home">
     <img src="assets/Logo/fox-sage-logo.png" alt="Fox &amp; Sage Barber Company">
   </a>
-  <nav aria-label="Primary">
+  <nav id="primary-nav" aria-label="Primary">
     <a href="services.html" class="active">Services</a>
     <a href="index.html#about">About</a>
     <a href="https://fox-sage-barber-co.square.site/" target="_blank" rel="noopener noreferrer" class="nav-cta">Book Appointment<span class="sr-only"> (opens in new tab)</span></a>
@@ -569,6 +626,25 @@
     }
   }, { threshold: 0.08, rootMargin: "0px 0px -6% 0px" });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Hamburger menu
+  const menuToggle = document.querySelector('.menu-toggle');
+  const primaryNav = document.getElementById('primary-nav');
+  if (menuToggle && primaryNav) {
+    menuToggle.addEventListener('click', () => {
+      const open = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!open));
+      menuToggle.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+      primaryNav.classList.toggle('is-open', !open);
+    });
+    primaryNav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Open menu');
+        primaryNav.classList.remove('is-open');
+      });
+    });
+  }
 </script>
 
 </body>
