@@ -4,24 +4,24 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Services — Fox & Sage Barber Company</title>
-<meta name="description" content="Fox & Sage Barber Company service menu. Haircuts, shaves, beard trims and scalp care in downtown Salt Lake City.">
+<meta name="description" content="Fox & Sage Barber Company service menu. Haircuts, shaves and beard trims in Salt Lake City.">
 <meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg:        #ffffff;
     --ink:       #161412;
-    --ink-dim:   #5a584f;
-    --ink-faint: #a09c8f;
-    --sage:      #898E66;
-    --gold:      #9D7B30;
-    --gold-warm: #9D7B30;
-    --red:       #FF2A00;
+    --ink-dim:   #5a584f;   /* muted body text (7:1 on white) */
+    --ink-faint: #6e6a60;   /* secondary labels (5.4:1 on white) */
+    --gold:      #9D7B30;   /* large text on white, any text on dark */
+    --gold-text: #7A5F22;   /* gold for small text on white (6:1) */
+    --red:       #FF2A00;   /* brand accent: decorative only */
+    --red-ui:    #D42300;   /* button fills behind white text (5.2:1) */
+    --red-ui-hover: #B01D00;
     --rule:      rgba(22, 20, 18, 0.12);
 
-    --f-display: "Oswald", "Work Sans", system-ui, sans-serif;
     --f-body:    "Work Sans", system-ui, -apple-system, sans-serif;
     --f-mono:    "JetBrains Mono", ui-monospace, monospace;
 
@@ -35,7 +35,7 @@
     background: var(--bg);
     color: var(--ink);
     font-family: var(--f-body);
-    font-weight: 300;
+    font-weight: 400;
     font-size: 17px;
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
@@ -76,12 +76,12 @@
     border-radius: 12px;
     box-shadow: 0 4px 24px rgba(255,42,0,0.12), 0 1px 4px rgba(255,42,0,0.06);
     font-family: var(--f-mono);
-    font-size: 11px;
-    letter-spacing: 0.22em;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--ink);
   }
-  .topbar .spacer { display: block; }
   .topbar .mark {
     grid-column: 1;
     justify-self: start;
@@ -101,16 +101,16 @@
     gap: 32px;
   }
   .topbar nav a { transition: color .2s; color: inherit; }
-  .topbar nav a:hover { color: var(--gold-warm); }
-  .topbar nav a.active { color: var(--ink); font-weight: 500; }
+  .topbar nav a:hover { color: var(--gold-text); }
+  .topbar nav a.active { color: var(--ink); text-decoration: underline; text-underline-offset: 6px; }
   .topbar nav a.nav-cta {
-    background: var(--red);
+    background: var(--red-ui);
     color: #fff;
-    padding: 9px 18px;
-    letter-spacing: 0.2em;
+    padding: 10px 18px;
+    border-radius: 8px;
     transition: background .2s ease, color .2s ease;
   }
-  .topbar nav a.nav-cta:hover { background: #cc2200; color: #fff; }
+  .topbar nav a.nav-cta:hover { background: var(--red-ui-hover); color: #fff; }
   @media (min-width: 760px) { .topbar nav { display: flex; } }
 
   /* --- Mobile hamburger --------------------------------------- */
@@ -120,12 +120,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 5px;
-    width: 32px; height: 32px;
+    width: 44px; height: 44px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 2px;
+    padding: 0;
     color: var(--ink);
   }
   .menu-toggle span {
@@ -195,8 +196,9 @@
   }
   .svc-billboard-eyebrow {
     font-family: var(--f-mono);
-    font-size: 11px;
-    letter-spacing: 0.36em;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--gold);
     display: inline-flex;
@@ -223,22 +225,23 @@
   }
   .svc-billboard h1 em {
     font-style: normal;
-    color: var(--gold-warm);
+    color: var(--gold);
   }
   .svc-billboard p {
-    color: rgba(244,239,228,0.72);
-    font-size: clamp(14px, 1.3vw, 16px);
-    font-weight: 600;
+    color: rgba(244,239,228,0.9);
+    font-size: clamp(16px, 1.4vw, 18px);
+    font-weight: 500;
     max-width: 50ch;
     line-height: 1.6;
     margin: 0;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.5);
   }
   .btn.light {
-    border-color: rgba(244,239,228,0.65);
+    border-color: rgba(244,239,228,0.85);
     color: #f4efe4;
     background: transparent;
   }
-  .btn.light:hover { color: #fff; border-color: var(--red); }
+  .btn.light:hover { color: #fff; border-color: var(--red-ui); }
   @media (max-width: 759px) {
     .svc-billboard {
       min-height: 52vh;
@@ -284,7 +287,7 @@
     line-height: 1.1;
   }
   .svc-card-desc {
-    font-size: 14px;
+    font-size: 16px;
     color: var(--ink-dim);
     line-height: 1.55;
     margin: 0;
@@ -300,39 +303,38 @@
   }
   .svc-card-book {
     font-family: var(--f-mono);
-    font-size: 11px;
-    letter-spacing: 0.22em;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--ink);
     border-bottom: 1px solid currentColor;
-    padding-bottom: 1px;
+    padding-block: 6px 1px;
     transition: color .2s ease;
     flex-shrink: 0;
   }
-  .svc-card-book:hover { color: var(--red); }
+  .svc-card-book:hover { color: var(--red-ui); }
   .svc-card-pricing {
     margin-left: auto;
     display: flex;
     align-items: baseline;
-    gap: 6px;
+    gap: 8px;
     font-family: var(--f-mono);
-    font-size: 12px;
+    font-size: 14px;
     font-feature-settings: "tnum";
     white-space: nowrap;
   }
   .svc-card-price {
     color: var(--ink);
-    font-weight: 500;
+    font-weight: 700;
+    font-size: 16px;
   }
-  .svc-card-sep {
-    color: var(--ink-faint);
-    font-size: 10px;
-  }
+  .svc-card-sep { color: var(--ink-faint); }
   .svc-card-time {
     color: var(--ink-faint);
-    letter-spacing: 0.16em;
+    font-weight: 500;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    font-size: 10px;
   }
 
   /* Book CTA strip */
@@ -358,8 +360,9 @@
   }
   .book-strip-copy span {
     font-family: var(--f-mono);
-    font-size: 11px;
-    letter-spacing: 0.22em;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--ink-faint);
   }
@@ -374,11 +377,13 @@
     color: var(--ink);
     background: var(--bg);
     font-family: var(--f-mono);
-    font-size: 12px;
-    letter-spacing: 0.28em;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
     cursor: pointer;
     position: relative;
+    isolation: isolate; /* keeps the hover fill above the button's own background */
     overflow: hidden;
     transition: color .25s ease, border-color .25s ease;
   }
@@ -386,12 +391,12 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: var(--red);
+    background: var(--red-ui);
     transform: translateY(101%);
     transition: transform .35s cubic-bezier(.7,0,.2,1);
     z-index: -1;
   }
-  .btn:hover { color: #fff; border-color: var(--red); }
+  .btn:hover { color: #fff; border-color: var(--red-ui); }
   .btn:hover::before { transform: translateY(0); }
   .btn .arrow { width: 18px; height: 1px; background: currentColor; position: relative; }
   .btn .arrow::after {
@@ -406,7 +411,6 @@
   /* Footer */
   footer {
     background: #0a0a0a;
-    border-top: none;
     padding: 36px var(--mx);
     display: flex;
     flex-wrap: wrap;
@@ -414,13 +418,13 @@
     justify-content: space-between;
     align-items: center;
     font-family: var(--f-mono);
-    font-size: 11px;
-    letter-spacing: 0.2em;
+    font-size: 12px;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: rgba(244,239,228,0.45);
+    color: rgba(244,239,228,0.75);
   }
-  footer a { color: rgba(244,239,228,0.45); }
-  footer a:hover { color: var(--gold-warm); }
+  footer a { color: inherit; }
+  footer a:hover { color: var(--gold); }
   footer .social { display: flex; gap: 22px; }
 
   /* Reveal */
@@ -460,8 +464,8 @@
     color: #fff;
     padding: 10px 20px;
     font-family: var(--f-mono);
-    font-size: 11px;
-    letter-spacing: 0.22em;
+    font-size: 13px;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     transition: top .2s ease;
     white-space: nowrap;
@@ -505,7 +509,7 @@
   <section class="svc-billboard" aria-label="Services">
     <div class="svc-billboard-inner reveal">
       <span class="svc-billboard-eyebrow">Services &amp; Pricing</span>
-      <h1>Cuts, Shaves &amp; <em>Scalp Care.</em></h1>
+      <h1>Cuts, Shaves &amp; <em>Beard Trims.</em></h1>
       <p>Every appointment opens with a consultation and closes with a hot towel. Pricing confirmed at booking.</p>
       <a class="btn light" href="https://fox-sage-barber-co.square.site/" target="_blank" rel="noopener noreferrer">Book an Appointment <span class="sr-only">(opens in new tab)</span><span class="arrow" aria-hidden="true"></span></a>
     </div>
@@ -515,13 +519,26 @@
     <div class="svc-grid reveal">
 
       <article class="svc-card">
-        <h2 class="svc-card-name">Haircut</h2>
-        <p class="svc-card-desc">Haircut with included neck shave</p>
+        <h2 class="svc-card-name">Long Haircut</h2>
+        <p class="svc-card-desc">Long hair service.</p>
         <div class="svc-card-foot">
           <a class="svc-card-book" href="https://fox-sage-barber-co.square.site/" target="_blank" rel="noopener noreferrer">Book now<span class="sr-only"> (opens in new tab)</span></a>
           <div class="svc-card-pricing">
-            <span class="svc-card-price">$35.00</span>
-            <span class="svc-card-sep">•</span>
+            <span class="svc-card-price">$45.00</span>
+            <span class="svc-card-sep" aria-hidden="true">•</span>
+            <span class="svc-card-time">1 hr</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <h2 class="svc-card-name">Haircut</h2>
+        <p class="svc-card-desc">Haircut with included neck shave.</p>
+        <div class="svc-card-foot">
+          <a class="svc-card-book" href="https://fox-sage-barber-co.square.site/" target="_blank" rel="noopener noreferrer">Book now<span class="sr-only"> (opens in new tab)</span></a>
+          <div class="svc-card-pricing">
+            <span class="svc-card-price">$40.00</span>
+            <span class="svc-card-sep" aria-hidden="true">•</span>
             <span class="svc-card-time">30 mins</span>
           </div>
         </div>
@@ -533,9 +550,9 @@
         <div class="svc-card-foot">
           <a class="svc-card-book" href="https://fox-sage-barber-co.square.site/" target="_blank" rel="noopener noreferrer">Book now<span class="sr-only"> (opens in new tab)</span></a>
           <div class="svc-card-pricing">
-            <span class="svc-card-price">$40.00</span>
-            <span class="svc-card-sep">•</span>
-            <span class="svc-card-time">45 mins</span>
+            <span class="svc-card-price">$45.00</span>
+            <span class="svc-card-sep" aria-hidden="true">•</span>
+            <span class="svc-card-time">1 hr</span>
           </div>
         </div>
       </article>
@@ -547,33 +564,20 @@
           <a class="svc-card-book" href="https://fox-sage-barber-co.square.site/" target="_blank" rel="noopener noreferrer">Book now<span class="sr-only"> (opens in new tab)</span></a>
           <div class="svc-card-pricing">
             <span class="svc-card-price">$25.00</span>
-            <span class="svc-card-sep">•</span>
-            <span class="svc-card-time">15 mins</span>
+            <span class="svc-card-sep" aria-hidden="true">•</span>
+            <span class="svc-card-time">30 mins</span>
           </div>
         </div>
       </article>
 
       <article class="svc-card">
         <h2 class="svc-card-name">Haircut &amp; Beard Trim</h2>
-        <p class="svc-card-desc">Haircut &amp; Beard trim/shape</p>
+        <p class="svc-card-desc">Haircut &amp; beard trim/shape.</p>
         <div class="svc-card-foot">
           <a class="svc-card-book" href="https://fox-sage-barber-co.square.site/" target="_blank" rel="noopener noreferrer">Book now<span class="sr-only"> (opens in new tab)</span></a>
           <div class="svc-card-pricing">
-            <span class="svc-card-price">$60.00</span>
-            <span class="svc-card-sep">•</span>
-            <span class="svc-card-time">1 hr</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="svc-card">
-        <h2 class="svc-card-name">Haircut &amp; Full Service Beard Trim</h2>
-        <p class="svc-card-desc">Haircut &amp; Beard trim with hot lather, hot towel &amp; razor lineup</p>
-        <div class="svc-card-foot">
-          <a class="svc-card-book" href="https://fox-sage-barber-co.square.site/" target="_blank" rel="noopener noreferrer">Book now<span class="sr-only"> (opens in new tab)</span></a>
-          <div class="svc-card-pricing">
-            <span class="svc-card-price">$70.00</span>
-            <span class="svc-card-sep">•</span>
+            <span class="svc-card-price">$65.00</span>
+            <span class="svc-card-sep" aria-hidden="true">•</span>
             <span class="svc-card-time">1 hr</span>
           </div>
         </div>
@@ -581,51 +585,25 @@
 
       <article class="svc-card">
         <h2 class="svc-card-name">Beard Trim</h2>
-        <p class="svc-card-desc">Beard trim or shape with trimmers</p>
+        <p class="svc-card-desc">Beard trim or shape with trimmers.</p>
         <div class="svc-card-foot">
           <a class="svc-card-book" href="https://fox-sage-barber-co.square.site/" target="_blank" rel="noopener noreferrer">Book now<span class="sr-only"> (opens in new tab)</span></a>
           <div class="svc-card-pricing">
             <span class="svc-card-price">$25.00</span>
-            <span class="svc-card-sep">•</span>
-            <span class="svc-card-time">15 mins</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="svc-card">
-        <h2 class="svc-card-name">Full Service Beard Trim</h2>
-        <p class="svc-card-desc">Beard trim/shape with hot towel and razor lineup.</p>
-        <div class="svc-card-foot">
-          <a class="svc-card-book" href="https://fox-sage-barber-co.square.site/" target="_blank" rel="noopener noreferrer">Book now<span class="sr-only"> (opens in new tab)</span></a>
-          <div class="svc-card-pricing">
-            <span class="svc-card-price">$35.00</span>
-            <span class="svc-card-sep">•</span>
+            <span class="svc-card-sep" aria-hidden="true">•</span>
             <span class="svc-card-time">30 mins</span>
           </div>
         </div>
       </article>
 
       <article class="svc-card">
-        <h2 class="svc-card-name">Head Shave</h2>
-        <p class="svc-card-desc">Razor head shave with hot lather and hot towel.</p>
-        <div class="svc-card-foot">
-          <a class="svc-card-book" href="https://fox-sage-barber-co.square.site/" target="_blank" rel="noopener noreferrer">Book now<span class="sr-only"> (opens in new tab)</span></a>
-          <div class="svc-card-pricing">
-            <span class="svc-card-price">$40.00</span>
-            <span class="svc-card-sep">•</span>
-            <span class="svc-card-time">45 mins</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="svc-card">
         <h2 class="svc-card-name">Haircut &amp; Full Shave</h2>
-        <p class="svc-card-desc">Haircut &amp; Shave with hot towel.</p>
+        <p class="svc-card-desc">Haircut &amp; shave with hot towel.</p>
         <div class="svc-card-foot">
           <a class="svc-card-book" href="https://fox-sage-barber-co.square.site/" target="_blank" rel="noopener noreferrer">Book now<span class="sr-only"> (opens in new tab)</span></a>
           <div class="svc-card-pricing">
             <span class="svc-card-price">$70.00</span>
-            <span class="svc-card-sep">•</span>
+            <span class="svc-card-sep" aria-hidden="true">•</span>
             <span class="svc-card-time">1 hr</span>
           </div>
         </div>
@@ -633,12 +611,12 @@
 
       <article class="svc-card">
         <h2 class="svc-card-name">Shave</h2>
-        <p class="svc-card-desc">Full face shave w/ hot lather and hot towel</p>
+        <p class="svc-card-desc">Full face shave with hot lather and hot towel.</p>
         <div class="svc-card-foot">
           <a class="svc-card-book" href="https://fox-sage-barber-co.square.site/" target="_blank" rel="noopener noreferrer">Book now<span class="sr-only"> (opens in new tab)</span></a>
           <div class="svc-card-pricing">
             <span class="svc-card-price">$40.00</span>
-            <span class="svc-card-sep">•</span>
+            <span class="svc-card-sep" aria-hidden="true">•</span>
             <span class="svc-card-time">30 mins</span>
           </div>
         </div>
@@ -660,8 +638,7 @@
   <span>© 2026 Fox &amp; Sage Barber Co.</span>
   <span class="social">
     <a href="https://fox-sage-barber-co.square.site/" target="_blank" rel="noopener noreferrer">Book<span class="sr-only"> (opens in new tab)</span></a>
-    <a href="https://www.instagram.com/foxandsagebarbershop" target="_blank" rel="noopener noreferrer" aria-label="Fox &amp; Sage on Instagram">Instagram<span class="sr-only"> (opens in new tab)</span></a>
-    <a href="#" aria-label="Google">Google</a>
+    <a href="https://www.instagram.com/foxandsagebarbershop" target="_blank" rel="noopener noreferrer">Instagram<span class="sr-only"> (opens in new tab)</span></a>
   </span>
   <span>Cut sharp, sit easy.</span>
 </footer>

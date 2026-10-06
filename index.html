@@ -4,23 +4,24 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fox & Sage Barber Company — Precision cuts. Classic craft.</title>
-<meta name="description" content="Fox & Sage Barber Company. Precision cuts, hot towel shaves and classic straight-razor craft in downtown Salt Lake City.">
+<meta name="description" content="Fox & Sage Barber Company. Precision cuts, hot towel shaves and classic straight-razor craft in Salt Lake City.">
 <meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg:        #ffffff;
-    --bg-2:      #ffffff;   /* all sections white per request */
-    --bg-3:      #ffffff;
     --ink:       #161412;   /* near-black for primary text */
-    --ink-dim:   #5a584f;   /* muted body text */
-    --ink-faint: #a09c8f;   /* hairline labels */
-    --sage:      #898E66;
-    --gold:      #9D7B30;
-    --gold-warm: #9D7B30;   /* keep brand gold on light bg */
-    --red:       #FF2A00;
+    --ink-dim:   #5a584f;   /* muted body text (7:1 on white) */
+    --ink-faint: #6e6a60;   /* secondary labels (5.4:1 on white) */
+    --sage:      #898E66;   /* decorative only (dots, rules) */
+    --sage-text: #646945;   /* sage for small text (5.8:1 on white) */
+    --gold:      #9D7B30;   /* large text on white, any text on dark */
+    --gold-text: #7A5F22;   /* gold for small text on white (6:1) */
+    --red:       #FF2A00;   /* brand accent: decorative only */
+    --red-ui:    #D42300;   /* button fills behind white text (5.2:1) */
+    --red-ui-hover: #B01D00;
     --rule:      rgba(22, 20, 18, 0.12);
 
     --f-display: "Oswald", "Work Sans", system-ui, sans-serif;
@@ -28,7 +29,6 @@
     --f-mono:    "JetBrains Mono", ui-monospace, monospace;
 
     --mx: clamp(20px, 5vw, 80px);
-    --section-y: clamp(100px, 13vw, 180px);
   }
 
   *, *::before, *::after { box-sizing: border-box; }
@@ -38,7 +38,7 @@
     background: var(--bg);
     color: var(--ink);
     font-family: var(--f-body);
-    font-weight: 300;
+    font-weight: 400;
     font-size: 17px;
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
@@ -62,41 +62,15 @@
   }
 
   /* --- Type --------------------------------------------------- */
-  .eyebrow {
-    font-family: var(--f-mono);
-    font-size: 11px;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    color: var(--sage);
-    font-weight: 500;
-  }
   h1, h2, h3 {
     font-family: var(--f-display);
     font-weight: 400;
-    color: var(--gold-warm);
     letter-spacing: 0.01em;
     line-height: 1;
     margin: 0;
   }
-  h2.section-title {
-    font-family: "Oswald", "Work Sans", system-ui, sans-serif;
-    font-weight: 400;
-    color: var(--ink);
-    font-size: clamp(38px, 6.5vw, 84px);
-    line-height: 0.98;
-    letter-spacing: -0.01em;
-  }
-  h2.section-title em {
-    font-style: normal;
-    color: var(--gold-warm);
-  }
   p { margin: 0; }
 
-  /* --- Layout helpers ---------------------------------------- */
-  .wrap {
-    padding-left: var(--mx);
-    padding-right: var(--mx);
-  }
   section { position: relative; }
 
   /* --- Top bar ----------------------------------------------- */
@@ -117,12 +91,12 @@
     border-radius: 12px;
     box-shadow: 0 4px 24px rgba(255,42,0,0.12), 0 1px 4px rgba(255,42,0,0.06);
     font-family: var(--f-mono);
-    font-size: 11px;
-    letter-spacing: 0.22em;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--ink);
   }
-  .topbar .spacer { display: block; }
   .topbar .mark {
     grid-column: 1;
     justify-self: start;
@@ -145,16 +119,16 @@
     transition: color .2s;
     color: inherit;
   }
-  .topbar nav a:hover { color: var(--gold-warm); }
+  .topbar nav a:hover { color: var(--gold-text); }
   .topbar nav a.nav-cta {
-    background: var(--red);
+    background: var(--red-ui);
     color: #fff;
-    padding: 9px 18px;
-    letter-spacing: 0.2em;
+    padding: 10px 18px;
+    border-radius: 8px;
     transition: background .2s ease, color .2s ease;
   }
   .topbar nav a.nav-cta:hover {
-    background: #cc2200;
+    background: var(--red-ui-hover);
     color: #fff;
   }
   @media (min-width: 760px) {
@@ -168,12 +142,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 5px;
-    width: 32px; height: 32px;
+    width: 44px; height: 44px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 2px;
+    padding: 0;
     color: var(--ink);
   }
   .menu-toggle span {
@@ -245,8 +220,9 @@
   }
   .hero-eyebrow {
     font-family: var(--f-mono);
-    font-size: 11px;
-    letter-spacing: 0.36em;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--gold);
     display: inline-flex;
@@ -264,7 +240,7 @@
   .hero-tagline {
     font-family: "Oswald", "Work Sans", system-ui, sans-serif;
     font-weight: 500;
-    font-size: clamp(48px, 9vw, 132px);
+    font-size: clamp(44px, 8vw, 80px);
     line-height: 0.92;
     color: #f4efe4;
     max-width: 14ch;
@@ -273,17 +249,8 @@
   }
   .hero-tagline em {
     font-style: normal;
-    color: var(--gold-warm);
+    color: var(--gold);
     display: block;
-  }
-  .hero-sub {
-    font-family: "Oswald", "Work Sans", system-ui, sans-serif;
-    font-weight: 300;
-    color: rgba(244,239,228,0.82);
-    font-size: 17px;
-    letter-spacing: 0.04em;
-    max-width: 48ch;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.5);
   }
   .hero .btn {
     color: #fff;
@@ -292,7 +259,7 @@
   }
   .hero .btn:hover {
     color: #fff;
-    border-color: var(--red);
+    border-color: var(--red-ui);
   }
 
   @media (max-width: 759px) {
@@ -312,11 +279,13 @@
     color: var(--ink);
     background: var(--bg);
     font-family: var(--f-mono);
-    font-size: 12px;
-    letter-spacing: 0.28em;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
     cursor: pointer;
     position: relative;
+    isolation: isolate; /* keeps the hover fill above the button's own background */
     overflow: hidden;
     transition: color .25s ease, border-color .25s ease;
   }
@@ -324,12 +293,12 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: var(--red);
+    background: var(--red-ui);
     transform: translateY(101%);
     transition: transform .35s cubic-bezier(.7,0,.2,1);
     z-index: -1;
   }
-  .btn:hover { color: #fff; border-color: var(--red); }
+  .btn:hover { color: #fff; border-color: var(--red-ui); }
   .btn:hover::before { transform: translateY(0); }
   .btn .arrow {
     width: 18px; height: 1px; background: currentColor; position: relative;
@@ -344,14 +313,14 @@
   }
   .btn.big {
     padding: 26px 44px;
-    font-size: 13px;
+    font-size: 14px;
   }
 
   /* --- Marquee strip ----------------------------------------- */
   .strip {
     border-top: 1px solid var(--rule);
     border-bottom: 1px solid var(--rule);
-    background: var(--bg-2);
+    background: var(--bg);
     overflow: hidden;
     white-space: nowrap;
     padding: 18px 0;
@@ -361,8 +330,9 @@
     gap: 56px;
     animation: slide 38s linear infinite;
     font-family: var(--f-mono);
-    font-size: 12px;
-    letter-spacing: 0.28em;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--ink-dim);
   }
@@ -373,138 +343,9 @@
     display: inline-block;
   }
   .strip-track .dot.red { background: var(--red); }
-
-  /* --- Walk-ins announcement bar ----------------------------- */
-  .walkin-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-    padding: 18px var(--mx);
-    background: #ffffff;
-    border-bottom: 1px solid var(--rule);
-    font-family: var(--f-mono);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: var(--ink);
-  }
-  .walkin-bar__dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--red);
-    box-shadow: 0 0 0 4px rgba(255,42,0,0.14);
-  }
   @keyframes slide {
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
-  }
-
-  /* --- Section header ---------------------------------------- */
-  .sec-head {
-    display: grid;
-    gap: 18px;
-    padding-top: var(--section-y);
-    padding-bottom: 56px;
-  }
-  .sec-head .meta {
-    display: flex;
-    gap: 18px;
-    align-items: center;
-    color: var(--sage);
-    font-family: var(--f-mono);
-    font-size: 11px;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-  }
-  .sec-head .meta .ln {
-    flex: 1;
-    height: 1px;
-    background: var(--rule);
-    max-width: 220px;
-  }
-
-  /* --- Services ---------------------------------------------- */
-  #services { background: var(--bg); padding: clamp(72px, 9vw, 120px) 55px 60px; }
-  .services-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    border-top: 1px solid var(--rule);
-  }
-  @media (min-width: 720px) {
-    .services-grid { grid-template-columns: 1fr 1fr; }
-  }
-  .svc {
-    padding: 36px 4px 32px;
-    border-bottom: 1px solid var(--rule);
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: baseline;
-    gap: 22px;
-    position: relative;
-    transition: padding-left .3s ease;
-  }
-  .svc::before {
-    content: "";
-    position: absolute;
-    left: -16px;
-    top: 0; bottom: 0;
-    width: 2px;
-    background: var(--red);
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform .3s ease;
-  }
-  .svc:hover { padding-left: 16px; }
-  .svc:hover::before { transform: scaleY(1); }
-  @media (min-width: 720px) {
-    .svc:nth-child(odd)  { border-right: 1px solid var(--rule); padding-right: 28px; }
-    .svc:nth-child(even) { padding-left: 28px; }
-    .svc:nth-child(even):hover { padding-left: 44px; }
-    .svc:nth-child(even)::before { left: 12px; }
-  }
-  .svc-num {
-    font-family: var(--f-mono);
-    font-size: 11px;
-    color: var(--ink-faint);
-    letter-spacing: 0.2em;
-  }
-  .svc-body { display: grid; gap: 8px; }
-  .svc-name {
-    font-family: "Oswald", "Work Sans", system-ui, sans-serif;
-    font-weight: 500;
-    font-size: clamp(22px, 2.4vw, 28px);
-    color: var(--ink);
-    line-height: 1.1;
-    letter-spacing: 0.005em;
-  }
-  .svc-desc {
-    color: var(--ink-dim);
-    font-size: 14px;
-    max-width: 38ch;
-  }
-  .svc-meta {
-    display: flex;
-    gap: 14px;
-    align-items: baseline;
-    flex-direction: column;
-    text-align: right;
-  }
-  .svc-price {
-    font-family: "Oswald", "Work Sans", system-ui, sans-serif;
-    font-weight: 500;
-    font-size: clamp(22px, 2.4vw, 28px);
-    color: var(--gold-warm);
-    line-height: 1;
-  }
-  .svc-time {
-    font-family: var(--f-mono);
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: var(--sage);
-    text-transform: uppercase;
   }
 
   /* --- About -------------------------------------------------- */
@@ -521,28 +362,10 @@
     gap: 36px;
     justify-items: center;
   }
-  .about-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    font-family: var(--f-mono);
-    font-size: 11px;
-    letter-spacing: 0.36em;
-    text-transform: uppercase;
-    color: var(--sage);
-  }
-  .about-eyebrow::before,
-  .about-eyebrow::after {
-    content: "";
-    width: 36px;
-    height: 1px;
-    background: var(--sage);
-    opacity: 0.55;
-  }
   .about-headline {
     font-family: "Oswald", "Work Sans", system-ui, sans-serif;
     font-weight: 400;
-    font-size: clamp(34px, 5.2vw, 68px);
+    font-size: clamp(30px, 4vw, 38px);
     line-height: 1.05;
     letter-spacing: -0.01em;
     color: var(--ink);
@@ -551,23 +374,26 @@
   }
   .about-headline em {
     font-style: normal;
-    color: var(--gold-warm);
+    color: var(--gold);
   }
   .about-copy {
     max-width: 60ch;
     color: var(--ink-dim);
-    font-size: clamp(15px, 1.4vw, 17px);
+    font-size: clamp(16px, 1.4vw, 18px);
     line-height: 1.7;
   }
   .about-copy p + p { margin-top: 18px; }
   .about-meta {
     margin-top: 12px;
     display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     gap: 22px;
     font-family: var(--f-mono);
-    font-size: 10px;
-    letter-spacing: 0.3em;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--ink-faint);
   }
@@ -619,7 +445,7 @@
     color: var(--ink);
     margin: 0;
   }
-  .visit-panel-heading em { font-style: normal; color: var(--gold-warm); }
+  .visit-panel-heading em { font-style: normal; color: var(--gold); }
   .visit-panel-body {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -630,11 +456,11 @@
   .visit-col-label {
     display: block;
     font-family: var(--f-mono);
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 500;
-    letter-spacing: 0.32em;
+    letter-spacing: 0.26em;
     text-transform: uppercase;
-    color: var(--sage);
+    color: var(--sage-text);
     margin-bottom: 20px;
   }
   .visit-address {
@@ -655,28 +481,30 @@
   }
   .visit-contact-links a {
     font-family: var(--f-mono);
-    font-size: 11px;
-    letter-spacing: 0.12em;
+    font-size: 14px;
+    letter-spacing: 0.04em;
     color: var(--ink-dim);
-    border-bottom: 1px solid transparent;
+    border-bottom: 1px solid currentColor;
     padding-bottom: 1px;
     transition: color .2s, border-color .2s;
-    word-break: break-all;
+    overflow-wrap: anywhere;
   }
-  .visit-contact-links a:hover { color: var(--gold-warm); border-color: var(--gold-warm); }
+  .visit-contact-links a:hover { color: var(--gold-text); }
   .visit-dir-btn {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 12px 22px;
+    padding: 13px 22px;
     border: 1px solid var(--ink);
     color: var(--ink);
     font-family: var(--f-mono);
-    font-size: 10px;
-    letter-spacing: 0.24em;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     background: transparent;
     position: relative;
+    isolation: isolate;
     overflow: hidden;
     transition: color .25s ease, border-color .25s ease;
     touch-action: manipulation;
@@ -685,12 +513,12 @@
   .visit-dir-btn::before {
     content: "";
     position: absolute; inset: 0;
-    background: var(--red);
+    background: var(--red-ui);
     transform: translateY(101%);
     transition: transform .35s cubic-bezier(.7,0,.2,1);
     z-index: -1;
   }
-  .visit-dir-btn:hover { color: #fff; border-color: var(--red); }
+  .visit-dir-btn:hover { color: #fff; border-color: var(--red-ui); }
   .visit-dir-btn:hover::before { transform: translateY(0); }
   /* Hours */
   .visit-hours-list {
@@ -709,9 +537,9 @@
   }
   .visit-hours-list .day {
     font-family: var(--f-mono);
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 500;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--ink-dim);
     flex-shrink: 0;
@@ -720,18 +548,18 @@
   .visit-hours-list .time {
     font-family: "Oswald", "Work Sans", system-ui, sans-serif;
     font-weight: 400;
-    font-size: clamp(14px, 1.3vw, 17px);
+    font-size: clamp(15px, 1.3vw, 17px);
     color: var(--ink);
     text-align: right;
   }
   .visit-hours-list li.is-closed .time { color: var(--ink-faint); }
-  .visit-hours-list li.today .day { color: var(--gold-warm); font-weight: 500; }
+  .visit-hours-list li.today .day { color: var(--gold-text); font-weight: 700; }
   .visit-hours-list li.today::before {
     content: "";
     position: absolute;
     left: -4px; top: 0; bottom: 0;
     width: 2px;
-    background: var(--gold-warm);
+    background: var(--gold);
   }
   /* Mobile: stack panels */
   @media (max-width: 768px) {
@@ -785,8 +613,9 @@
     color: var(--ink);
     border: 1px solid #fff;
     font-family: var(--f-mono);
-    font-size: 12px;
-    letter-spacing: 0.28em;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
     transition: background .25s ease, color .25s ease, border-color .25s ease;
   }
@@ -815,15 +644,14 @@
     background: transparent;
   }
   .book-btn:hover {
-    background: var(--red);
+    background: var(--red-ui);
     color: #fff;
-    border-color: var(--red);
+    border-color: var(--red-ui);
   }
 
   /* --- Footer ------------------------------------------------- */
   footer {
     background: #0a0a0a;
-    border-top: none;
     padding: 36px var(--mx);
     display: flex;
     flex-wrap: wrap;
@@ -831,13 +659,13 @@
     justify-content: space-between;
     align-items: center;
     font-family: var(--f-mono);
-    font-size: 11px;
-    letter-spacing: 0.2em;
+    font-size: 12px;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: rgba(244,239,228,0.45);
+    color: rgba(244,239,228,0.75);
   }
-  footer a { color: rgba(244,239,228,0.45); }
-  footer a:hover { color: var(--gold-warm); }
+  footer a { color: inherit; }
+  footer a:hover { color: var(--gold); }
   footer .social { display: flex; gap: 22px; }
 
   /* --- Reveal animation -------------------------------------- */
@@ -885,10 +713,11 @@
   .barbers-eyebrow {
     display: block;
     font-family: var(--f-mono);
-    font-size: 11px;
-    letter-spacing: 0.32em;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.26em;
     text-transform: uppercase;
-    color: var(--sage);
+    color: var(--sage-text);
     margin-bottom: 32px;
   }
   .barber-tabs {
@@ -909,7 +738,7 @@
     line-height: 1;
     letter-spacing: 0.02em;
     text-transform: uppercase;
-    color: #c0bcb3;
+    color: #8a867c; /* 3.6:1, passes for large text */
     transition: color .25s ease, background .25s ease, padding-left .25s ease;
   }
   .barber-tab.active {
@@ -937,28 +766,18 @@
     border: 1px solid var(--ink);
     color: #fff;
     font-family: var(--f-mono);
-    font-size: 11px;
-    letter-spacing: 0.22em;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     transition: background .25s ease, border-color .25s ease;
     white-space: nowrap;
   }
   .barber-book-btn:hover {
-    background: var(--red);
-    border-color: var(--red);
+    background: var(--red-ui);
+    border-color: var(--red-ui);
     color: #fff;
   }
-  .barber-profile-link {
-    font-family: var(--f-mono);
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--ink-dim);
-    border-bottom: 1px solid currentColor;
-    padding-bottom: 2px;
-    transition: color .2s ease;
-  }
-  .barber-profile-link:hover { color: var(--gold-warm); }
   .barbers-right {
     position: relative;
     overflow: hidden;
@@ -1003,8 +822,8 @@
     color: #fff;
     padding: 10px 20px;
     font-family: var(--f-mono);
-    font-size: 11px;
-    letter-spacing: 0.22em;
+    font-size: 13px;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     transition: top .2s ease;
     white-space: nowrap;
@@ -1019,8 +838,7 @@
 
   /* --- Touch action (eliminates 300ms tap delay on mobile) --- */
   .btn, .book-btn, .barber-book-btn, .barber-tab,
-  .topbar nav a, .map-card a.dir, footer a,
-  .barber-profile-link, .nav-cta {
+  .topbar nav a, footer a {
     touch-action: manipulation;
   }
 </style>
@@ -1031,7 +849,7 @@
 <div class="grain" aria-hidden="true"></div>
 
 <header class="topbar" id="topbar">
-  <a href="#top" class="mark" aria-label="Fox &amp; Sage Barber Company">
+  <a href="#top" class="mark">
     <img src="assets/Logo/fox-sage-logo.png" alt="Fox &amp; Sage Barber Company">
   </a>
   <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
@@ -1052,7 +870,7 @@
 <section class="hero" id="top" aria-label="Introduction">
   <div class="hero-inner">
     <span class="hero-eyebrow">Fox &amp; Sage Barber Co.</span>
-    <h1 class="hero-tagline" style="font-size: 80px">Precision cuts. <em>Classic craft.</em></h1>
+    <h1 class="hero-tagline">Precision cuts. <em>Classic craft.</em></h1>
     <a class="btn big" href="https://fox-sage-barber-co.square.site/" target="_blank" rel="noopener noreferrer">Book Now <span class="sr-only">(opens in new tab)</span><span class="arrow" aria-hidden="true"></span></a>
   </div>
 </section>
@@ -1061,7 +879,7 @@
 <div class="strip" aria-hidden="true">
   <div class="strip-track">
     <span>Straight‑razor shaves <i class="dot red"></i> Est. Salt Lake City <i class="dot"></i> Cuts &amp; conversation <i class="dot"></i> Hot towel service <i class="dot red"></i> Fox &amp; Sage Barber Co. <i class="dot"></i></span>
-    <span style="font-family: &quot;Work Sans&quot;">Straight‑razor shaves <i class="dot red"></i> Est. Salt Lake City <i class="dot"></i> Cuts &amp; conversation <i class="dot"></i> Hot towel service <i class="dot red"></i> Fox &amp; Sage Barber Co. <i class="dot"></i></span>
+    <span>Straight‑razor shaves <i class="dot red"></i> Est. Salt Lake City <i class="dot"></i> Cuts &amp; conversation <i class="dot"></i> Hot towel service <i class="dot red"></i> Fox &amp; Sage Barber Co. <i class="dot"></i></span>
   </div>
 </div>
 
@@ -1069,7 +887,7 @@
 <section id="about" aria-label="About Fox &amp; Sage">
   <div class="about-shell reveal">
 
-    <h2 class="about-headline" style="font-size: 38px">A barbershop, the way it <em>should be.</em></h2>
+    <h2 class="about-headline">A barbershop, the way it <em>should be.</em></h2>
     <div class="about-copy">
       <p>Fox &amp; Sage is a neighborhood shop where you get a great haircut, catch up with your barber, and leave with at least one bad joke you didn’t ask for. We think that’s a pretty good deal.</p>
       <p>We take the work seriously and the vibe easy. Come in, sit down, and don’t be surprised if you stick around a little longer than you planned.</p>
@@ -1181,8 +999,7 @@
   <span>© 2026 Fox &amp; Sage Barber Co.</span>
   <span class="social">
     <a href="https://fox-sage-barber-co.square.site/" target="_blank" rel="noopener noreferrer">Book<span class="sr-only"> (opens in new tab)</span></a>
-    <a href="https://www.instagram.com/foxandsagebarbershop" target="_blank" rel="noopener noreferrer" aria-label="Fox &amp; Sage on Instagram">Instagram<span class="sr-only"> (opens in new tab)</span></a>
-    <a href="#" aria-label="Google">Google</a>
+    <a href="https://www.instagram.com/foxandsagebarbershop" target="_blank" rel="noopener noreferrer">Instagram<span class="sr-only"> (opens in new tab)</span></a>
   </span>
   <span>Cut sharp, sit easy.</span>
 </footer>
